@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/recordFragment"
+        android:icon="@drawable/ic_mic_36dp"
+        android:title="@string/record" />
+
+    <item
+        android:id="@+id/listRecordFragment"
+        android:icon="@drawable/ic_playlist_play_36dp"
+        android:title="@string/list" />
+
+</menu>
