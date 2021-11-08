@@ -1,5 +1,7 @@
 package com.light.voicerecorder
 
+import android.app.ActivityManager
+import android.content.Context
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.navigation.Navigation
@@ -18,5 +20,15 @@ class MainActivity : AppCompatActivity() {
         NavigationUI.setupWithNavController(
             binding.bottomNavigation, Navigation.findNavController(this, R.id.fragment)
         )
+    }
+
+    private fun isRunningService(): Boolean {
+        val manager = getSystemService(Context.ACTIVITY_SERVICE) as ActivityManager
+        for (service in manager.getRunningServices(Int.MAX_VALUE)) {
+            if ("com.light.voicerecorder.service.RecordService" == service.service.className) {
+                return true
+            }
+        }
+        return false
     }
 }
