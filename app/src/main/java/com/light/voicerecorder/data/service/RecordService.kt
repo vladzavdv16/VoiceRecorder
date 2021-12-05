@@ -1,9 +1,9 @@
-package com.light.voicerecorder.service
+package com.light.voicerecorder.data.service
 
+import android.app.IntentService
 import android.app.Notification
 import android.app.PendingIntent
 import android.app.Service
-import android.content.Context
 import android.content.Intent
 import android.media.MediaRecorder
 import android.os.IBinder
@@ -12,9 +12,9 @@ import android.widget.Toast
 import androidx.core.app.NotificationCompat
 import com.light.voicerecorder.MainActivity
 import com.light.voicerecorder.R
-import com.light.voicerecorder.database.RecordDatabase
-import com.light.voicerecorder.database.RecordDatabaseDao
-import com.light.voicerecorder.database.RecordingItem
+import com.light.voicerecorder.data.database.RecordDatabase
+import com.light.voicerecorder.data.database.RecordDatabaseDao
+import com.light.voicerecorder.data.database.RecordingItem
 import kotlinx.coroutines.*
 import java.io.File
 import java.io.IOException
@@ -25,6 +25,7 @@ class RecordService : Service() {
     private var fileName: String? = null
     private var filePatch: String? = null
     private var countRecors: Int? = null
+
 
     private var recorder: MediaRecorder? = null
 

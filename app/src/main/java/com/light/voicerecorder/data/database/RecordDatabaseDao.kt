@@ -1,4 +1,4 @@
-package com.light.voicerecorder.database
+package com.light.voicerecorder.data.database
 
 import androidx.lifecycle.LiveData
 import androidx.room.Dao

@@ -1,4 +1,4 @@
-package com.light.voicerecorder.database
+package com.light.voicerecorder.data.database
 
 import android.content.Context
 import androidx.room.Database
