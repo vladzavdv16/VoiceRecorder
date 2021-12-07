@@ -10,7 +10,7 @@ import android.os.IBinder
 import android.util.Log
 import android.widget.Toast
 import androidx.core.app.NotificationCompat
-import com.light.voicerecorder.MainActivity
+import com.light.voicerecorder.ui.MainActivity
 import com.light.voicerecorder.R
 import com.light.voicerecorder.data.database.RecordDatabase
 import com.light.voicerecorder.data.database.RecordDatabaseDao
