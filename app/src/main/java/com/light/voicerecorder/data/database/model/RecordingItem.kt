@@ -1,4 +1,4 @@
-package com.light.voicerecorder.data.database
+package com.light.voicerecorder.data.database.model
 
 import androidx.room.ColumnInfo
 import androidx.room.Entity
@@ -9,12 +9,11 @@ data class RecordingItem(
     @PrimaryKey(autoGenerate = true)
     val id: Long = 0L,
     @ColumnInfo(name = "name")
-    var name: String,
-    @ColumnInfo(name = "time")
-    var time: Long,
+    var name: String = "",
+    @ColumnInfo(name = "filePath")
+    var filePath: String = "",
     @ColumnInfo(name = "length")
-    var length: Long,
-    @ColumnInfo(name = "filePatch")
-    var filePatch: String
-) {
-}
+    var length: Long = 0L,
+    @ColumnInfo(name = "time")
+    var time: Long = 0L
+)

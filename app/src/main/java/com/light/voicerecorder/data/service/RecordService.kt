@@ -1,6 +1,6 @@
 package com.light.voicerecorder.data.service
 
-import android.app.IntentService
+
 import android.app.Notification
 import android.app.PendingIntent
 import android.app.Service
@@ -14,7 +14,7 @@ import com.light.voicerecorder.MainActivity
 import com.light.voicerecorder.R
 import com.light.voicerecorder.data.database.RecordDatabase
 import com.light.voicerecorder.data.database.RecordDatabaseDao
-import com.light.voicerecorder.data.database.RecordingItem
+import com.light.voicerecorder.data.database.model.RecordingItem
 import kotlinx.coroutines.*
 import java.io.File
 import java.io.IOException
@@ -24,8 +24,7 @@ class RecordService : Service() {
 
     private var fileName: String? = null
     private var filePatch: String? = null
-    private var countRecors: Int? = null
-
+    private var countRecords: Int? = null
 
     private var recorder: MediaRecorder? = null
 
@@ -34,16 +33,12 @@ class RecordService : Service() {
 
     private var database: RecordDatabaseDao? = null
 
-    private lateinit var recordingItem: RecordingItem
-
     private val job = Job()
 
     private val uiScope = CoroutineScope(Dispatchers.Main + job)
 
-    private val CHANNEL_ID = "RecordService"
-
     override fun onBind(p0: Intent?): IBinder? {
-        TODO("Not yet implemented")
+        return null
     }
 
     override fun onCreate() {
@@ -53,9 +48,8 @@ class RecordService : Service() {
     }
 
     override fun onStartCommand(intent: Intent?, flags: Int, startId: Int): Int {
-        return super.onStartCommand(intent, flags, startId)
 
-        countRecors = intent?.extras?.get("COUNT") as Int
+        startRecording()
 
         return START_STICKY
     }
@@ -85,7 +79,8 @@ class RecordService : Service() {
 
     private fun createNotification(): Notification {
         val builder: NotificationCompat.Builder =
-            NotificationCompat.Builder(applicationContext, CHANNEL_ID)
+            NotificationCompat.Builder(applicationContext,
+                getString(R.string.notification_channel_id))
                 .setSmallIcon(R.drawable.ic_mic_36dp)
                 .setContentTitle(getString(R.string.app_name))
                 .setContentText(getString(R.string.notification_recording))
@@ -120,13 +115,15 @@ class RecordService : Service() {
 
     private fun stopRecording() {
 
+        val recordingItem = RecordingItem()
+
         recorder?.stop()
         elapsedTimeMillis = System.currentTimeMillis() - startingTimeMillis!!
         recorder?.release()
         Toast.makeText(this, R.string.toast_recording_finish, Toast.LENGTH_SHORT).show()
 
         recordingItem.name = fileName.toString()
-        recordingItem.filePatch = filePatch.toString()
+        recordingItem.filePath = filePatch.toString()
         recordingItem.length = elapsedTimeMillis as Long
         recordingItem.time = System.currentTimeMillis()
 
