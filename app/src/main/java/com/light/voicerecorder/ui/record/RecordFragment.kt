@@ -8,15 +8,12 @@ import android.content.pm.PackageManager
 import android.os.Build
 import android.os.Bundle
 import androidx.fragment.app.Fragment
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
 import android.view.WindowManager
 import android.widget.Toast
 import androidx.core.content.ContextCompat
-import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
-import com.light.voicerecorder.MainActivity
+import com.light.voicerecorder.ui.MainActivity
 import com.light.voicerecorder.R
 import com.light.voicerecorder.data.database.RecordDatabase
 import com.light.voicerecorder.data.database.RecordDatabaseDao
@@ -47,7 +44,6 @@ class RecordFragment : Fragment(R.layout.fragment_record) {
         binding = view.let { FragmentRecordBinding.bind(it) }
 
         database = context?.let { RecordDatabase.getInstance(it).recordDatabaseDao }
-//        database?.getCount()?.observe(viewLifecycleOwner) { count = it }
 
         mainActivity = activity as MainActivity
 

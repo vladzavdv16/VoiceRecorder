@@ -1,4 +1,4 @@
-package com.light.voicerecorder
+package com.light.voicerecorder.ui
 
 import android.app.ActivityManager
 import android.content.Context
@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.navigation.Navigation
 import androidx.navigation.ui.NavigationUI
+import com.light.voicerecorder.R
 import com.light.voicerecorder.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
