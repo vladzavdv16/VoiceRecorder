@@ -22,9 +22,9 @@ class MainActivity : AppCompatActivity() {
         )
     }
 
-    private fun isRunningService(): Boolean {
-        val manager = getSystemService(Context.ACTIVITY_SERVICE) as ActivityManager
-        for (service in manager.getRunningServices(Int.MAX_VALUE)) {
+    fun isRunningService(): Boolean {
+        val manager: ActivityManager = getSystemService(Context.ACTIVITY_SERVICE) as ActivityManager
+        for (service: ActivityManager.RunningServiceInfo in manager.getRunningServices(Int.MAX_VALUE)) {
             if ("com.light.voicerecorder.data.service.RecordService" == service.service.className) {
                 return true
             }

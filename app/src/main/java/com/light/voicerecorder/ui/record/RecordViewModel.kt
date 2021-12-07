@@ -13,7 +13,7 @@ import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import java.util.concurrent.TimeUnit
 
-class RecordViewModel(private val app: Application) : AndroidViewModel(app) {
+class RecordViewModel(app: Application) : AndroidViewModel(app) {
 
     private val TRIGGER_TIME = "TRIGGER_AT"
     private val second = 1_000L
@@ -33,20 +33,18 @@ class RecordViewModel(private val app: Application) : AndroidViewModel(app) {
     }
 
     fun timeFormatter(time: Long): String {
-        return String.format(
-            "%02d:%02d:%02d",
+        return String.format("%02d:%02d:%02d",
             TimeUnit.MILLISECONDS.toHours(time) % 60,
             TimeUnit.MILLISECONDS.toMinutes(time) % 60,
-            TimeUnit.MILLISECONDS.toSeconds(time) % 60
-        )
+            TimeUnit.MILLISECONDS.toSeconds(time) % 60)
     }
 
     fun stopTimer() {
         timer.cancel()
+        resetTimer()
     }
 
     fun startTimer() {
-        resetTimer()
         val triggerTime = SystemClock.elapsedRealtime()
 
         viewModelScope.launch {
@@ -78,7 +76,7 @@ class RecordViewModel(private val app: Application) : AndroidViewModel(app) {
 
     private suspend fun saveTime(triggerTime: Long) =
         withContext(Dispatchers.IO) {
-            prefs.edit().putLong(TRIGGER_TIME, triggerTime)
+            prefs.edit().putLong(TRIGGER_TIME, triggerTime).apply()
         }
 
     private suspend fun loadTime(): Long =

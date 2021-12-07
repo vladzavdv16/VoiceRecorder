@@ -11,9 +11,9 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:layout_marginBottom="100dp"
-        android:text="00:00"
-       android:textAppearance="@style/TextAppearance.AppCompat.Large"
-        android:textSize="36sp" />
+        android:textAppearance="@style/TextAppearance.AppCompat.Large"
+        android:textSize="36sp"
+        tools:text="00:00:00"/>
 
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
