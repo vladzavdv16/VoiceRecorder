@@ -26,16 +26,16 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
-                android:layout_marginLeft="7dp"
-                android:layout_marginRight="7dp"
+                android:layout_marginLeft="8dp"
+                android:layout_marginRight="8dp"
                 android:src="@drawable/ic_mic_36dp"
                 app:tint="@android:color/darker_gray" />
 
             <LinearLayout
-                android:layout_width="match_parent"
+                android:layout_width="0dp"
+                android:layout_weight="5"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:layout_marginRight="10dp"
                 android:orientation="vertical">
 
                 <TextView
@@ -56,9 +56,16 @@
                     android:text="00:00"
                     android:textSize="12sp" />
 
-
             </LinearLayout>
 
+            <ImageView
+                android:id="@+id/delete"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                app:srcCompat="@android:drawable/ic_delete"
+                app:tint="@android:color/darker_gray"/>
 
         </LinearLayout>
 

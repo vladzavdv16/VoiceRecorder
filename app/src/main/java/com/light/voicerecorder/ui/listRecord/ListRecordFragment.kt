@@ -5,10 +5,10 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.FrameLayout
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.light.voicerecorder.data.database.RecordDatabase
-import com.light.voicerecorder.data.database.RecordDatabaseDao
 import com.light.voicerecorder.databinding.FragmentListRecordBinding
 import com.light.voicerecorder.ui.listRecord.adapter.ListRecordAdapter
 import com.light.voicerecorder.utils.ListRecordViewModelFactory
@@ -28,11 +28,10 @@ class ListRecordFragment : Fragment() {
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?,
-    ): View {
+        savedInstanceState: Bundle?): FrameLayout? {
         // Inflate the layout for this fragment
         binding = FragmentListRecordBinding.inflate(inflater, container, false)
-        return binding!!.root
+        return binding?.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {

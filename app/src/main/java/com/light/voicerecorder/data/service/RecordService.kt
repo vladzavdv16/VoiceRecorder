@@ -1,6 +1,7 @@
 package com.light.voicerecorder.data.service
 
 
+import android.annotation.SuppressLint
 import android.app.Notification
 import android.app.PendingIntent
 import android.app.Service
@@ -95,6 +96,7 @@ class RecordService : Service() {
         return builder.build()
     }
 
+    @SuppressLint("SimpleDateFormat")
     private fun setFileNameAndPath() {
 
         var count = 0
