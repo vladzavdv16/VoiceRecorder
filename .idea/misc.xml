@@ -3,9 +3,15 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Project_Android_Studio/VoiceRecorder/app/src/main/res/drawable/ic_mic_36dp.xml" value="0.2703125" />
+        <entry key="..\:/Project_Android_Studio/VoiceRecorder/app/src/main/res/drawable/ic_playlist_play_36dp.xml" value="0.2703125" />
+        <entry key="..\:/Project_Android_Studio/VoiceRecorder/app/src/main/res/drawable/ic_stop_36dp.xml" value="0.2703125" />
         <entry key="..\:/Project_Android_Studio/VoiceRecorder/app/src/main/res/layout/activity_main.xml" value="0.25416666666666665" />
         <entry key="..\:/Project_Android_Studio/VoiceRecorder/app/src/main/res/layout/fragment_list_record.xml" value="0.25416666666666665" />
+        <entry key="..\:/Project_Android_Studio/VoiceRecorder/app/src/main/res/layout/fragment_player.xml" value="0.21557971014492755" />
         <entry key="..\:/Project_Android_Studio/VoiceRecorder/app/src/main/res/layout/fragment_record.xml" value="0.25416666666666665" />
+        <entry key="..\:/Project_Android_Studio/VoiceRecorder/app/src/main/res/layout/list_item_record.xml" value="0.2" />
+        <entry key="..\:/Project_Android_Studio/VoiceRecorder/app/src/main/res/layout/player_fragment.xml" value="0.25317028985507245" />
         <entry key="..\:/Project_Android_Studio/VoiceRecorder/app/src/main/res/menu/menu_bottom_nav.xml" value="0.25416666666666665" />
       </map>
     </option>
