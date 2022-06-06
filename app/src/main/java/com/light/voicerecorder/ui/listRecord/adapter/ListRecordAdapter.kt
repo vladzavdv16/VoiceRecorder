@@ -6,9 +6,11 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.FragmentActivity
+import androidx.fragment.app.FragmentTransaction
 import androidx.recyclerview.widget.RecyclerView
 import com.light.voicerecorder.data.database.model.RecordingItem
 import com.light.voicerecorder.databinding.ListItemRecordBinding
+import com.light.voicerecorder.ui.dialog.RemoveDialogFragment
 import com.light.voicerecorder.ui.player.PlayerFragment
 import java.io.File
 import java.util.concurrent.TimeUnit
@@ -48,7 +50,7 @@ class ListRecordAdapter : RecyclerView.Adapter<ListRecordAdapter.ViewHolder>() {
         holder.binding.recordLength.text = String.format("%02d:%02d", minutes, seconds)
 
         holder.binding.delete.setOnClickListener {
-            Toast.makeText(context, "delete", Toast.LENGTH_SHORT).show()
+           removeItemDialog(recordingItem, context)
         }
 
         holder.binding.cardView.setOnClickListener {
@@ -58,12 +60,8 @@ class ListRecordAdapter : RecyclerView.Adapter<ListRecordAdapter.ViewHolder>() {
             if (file.exists()) {
                 try {
                     playRecord(filePath, context)
-                } catch (e: Exception) {
-
-                }
-
+                } catch (e: Exception) { }
             } else {
-
                 Toast.makeText(context, "Аудиофайл не найден", Toast.LENGTH_SHORT).show()
             }
 
@@ -79,4 +77,21 @@ class ListRecordAdapter : RecyclerView.Adapter<ListRecordAdapter.ViewHolder>() {
             .beginTransaction()
         playerFragment.show(fragmentTransaction, "dialog_playback")
     }
+
+    private fun removeItemDialog(
+        recordingItem: RecordingItem,
+        context: Context?
+    ) {
+        val removeDialogFragment: RemoveDialogFragment =
+            RemoveDialogFragment()
+                .newInstance(
+                    recordingItem.id,
+                    recordingItem.filePath)
+        val transaction: FragmentTransaction =
+            (context as FragmentActivity)
+                .supportFragmentManager
+                .beginTransaction()
+        removeDialogFragment.show(transaction, "dialog_remove")
+    }
+
 }
